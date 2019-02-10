@@ -22,4 +22,11 @@ type=rpm-md
 
 Now your repository is ready for use. So install Logstash with this command line:
 [user]$ sudo yum install logstash
+
+Before you start, you need to make two changes to the current user’s environment. First, you need to add your current user to the logstash group so it can write to the application’s directories for caching messages. The usermod command will do this for you.
+[user]$ sudo usermod -a -G logstash ec2-user
+
+Next, if you’re running this tutorial on a micro instance, you may have memory problems. Modify your .bashrc and add this line:
+[user]$ export LS_JAVA_OPTS=“-Xms500m -Xmx500m -XX:ParallelGCThreads=1”
+
 ```
