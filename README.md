@@ -37,5 +37,5 @@ Next, if you’re running this tutorial on a micro instance, you may have memory
 This conf file creates a daily log in /var/log/logstash/tacacs-{YYYY-MM-dd}. This is important because the script attaches this file into the ServiceNOW change.
 
 ### Step 3 - Configure ISE to send TACACS commands to the logstash remote target
-![alt text]()
+![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/remote%20target-fixed.png)
 ![alt text]()
