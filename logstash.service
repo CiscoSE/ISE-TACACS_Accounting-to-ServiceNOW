@@ -1,0 +1,100 @@
+# description: logstash
+
+# Source function library.
+. /etc/init.d/functions
+
+RETVAL=0
+prog="logstash"
+PIDFILE=/var/run/$prog.pid
+LOCKFILE=/var/lock/subsys/$prog
+PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/share/logstash/bin:.
+DESC="logstash"
+LS_HEAP_SIZE="4g"
+DAEMON_HOME="/usr/share/logstash/"
+DAEMON="bin/logstash"
+LOGSTASH_CONF="/etc/logstash/conf.d/logstash.conf"
+LOGSTASH_LOG="/var/log/logstash/logstash.log"
+DAEMON_ARGS="-f ${LOGSTASH_CONF}"
+SCRIPTNAME=/etc/init.d/logstash
+#the user that will run the script
+USER=logstash
+
+#logstash_ver="1.5.4"
+#logstash_bin="/home/ec2-user/logstash-$logstash_ver/bin/logstash"
+#logstash_conf="/etc/logstash/logstash.conf"
+#logstash_log="/var/log/logstash/$name.log"
+#	command="/usr/bin/nice ${NICE_LEVEL} ${logstash_bin} -f $logstash_conf --log ${logstash_log}"
+#echo "All value sets"
+
+start() {
+    if [ -f $PIDFILE ]; then
+        PID=`cat $PIDFILE`
+        if [ -z "`pgrep $PID`" ] && [ "$PID" != "`ps aux|grep -vE 'grep|runuser|bash'|grep -w "logstash"|awk '{print $2}'`" ]; then
+            printf "%s\n" "Process dead but pidfile exists"
+        else
+            printf "$prog is already running!\n"
+        fi
+    else
+        printf "%-50s" "Starting $prog ..."
+	#echo  $DAEMON_HOME
+        cd $DAEMON_HOME
+	#echo  "$DAEMON_ARGS"
+        #$DAEMON $DAEMON_ARGS >/dev/null 2>&1 &
+	/usr/share/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf 2>&1 &
+        sleep 5
+        PID=`ps aux|grep -vE 'grep|runuser|bash'|grep -w logstash|grep java|grep logstash|awk '{print $2}'`
+        if [ -z "$PID" ]; then
+            printf "[ \e[31mFAIL\033[0m ]\n"
+        else
+            echo $PID > $PIDFILE
+            printf "[ \e[32mOK\033[0m ]\n"
+        fi
+    fi
+}
+
+stop() {
+    printf "%-50s" "Shutting down $prog:"
+    if [ -f $PIDFILE ]; then
+        PID=`cat $PIDFILE`
+        kill -s 9 $PID 2>/dev/null
+        printf "[ \e[32mOK\033[0m ]\n"
+        rm -f $PIDFILE
+    else
+        printf "[ \e[31mFAIL\033[0m ]\n"
+    fi
+}
+
+check_status() {
+    printf "%-50s" "Checking $prog ..."
+    if [ -f $PIDFILE ]; then
+        PID=`cat $PIDFILE`
+        if [ -z "`pgrep $PID`" ] && [ "$PID" != "`ps aux|grep -vE 'grep|runuser|bash'|grep -w logstash|awk '{print $2}'`" ]; then
+            printf "%s\n" "Process dead but pidfile exists"
+        else
+            printf "[ \e[32mRUNNING\033[0m ]\n"
+        fi
+    else
+        printf "[ \e[31mSTOPPED\033[0m ]\n"
+    fi
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        check_status
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+exit 1
