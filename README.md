@@ -1,4 +1,4 @@
-# ISE/TACACS-Accounting to ServiceNOW-Change
+# ISE/TACACS Accounting to ServiceNOW Change
 
 ## Motivation
 The motivation for this code is to solve a need for folks who would like to automate a change management ticket into ServiceNOW when network administrators work on the company devices. There are a couple of ways to solve this but I decided to use syslog into Logstash, which allows for some transforms during the Logstash process.
@@ -37,4 +37,5 @@ Next, if you’re running this tutorial on a micro instance, you may have memory
 This conf file creates a daily log in /var/log/logstash/tacacs-{YYYY-MM-dd}. This is important because the script attaches this file into the ServiceNOW change.
 
 ### Step 3 - Configure ISE to send TACACS commands to the logstash remote target
-
+![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/remote%20target-fixed.png)
+![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/Logging%20Category.png)
