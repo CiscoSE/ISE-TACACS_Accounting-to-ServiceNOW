@@ -21,12 +21,12 @@ import datetime
 
 
 # User defined values ServiceNOW
-user = 'admin'
-pwd = 'C1sco12345!'
+user = ''
+pwd = ''
 
 # Define Variables and constants for ServiceNOW
-ServiceNOW_url = 'https://dev65894.service-now.com/api/now/table/change_request'
-ServiceNOW_upload_url = 'https://dev65894.service-now.com/api/now/attachment/file?table_name=change_request&table_sys_id='
+ServiceNOW_url = 'https://<YOUR VALUE>.service-now.com/api/now/table/change_request'
+ServiceNOW_upload_url = 'https://<YOUR VALUE>.service-now.com/api/now/attachment/file?table_name=change_request&table_sys_id='
 
 #  Headers and mime type text/csv
 headers = {"Content-Type":"application/json","Accept":"application/json"}
