@@ -41,6 +41,9 @@ This conf file creates a daily log in /var/log/logstash/tacacs-{YYYY-MM-dd}. Thi
 ![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/Logging%20Category.png)
 
 ### Step 4 - Setup a cronjob to run the script
+```
+$ python3 ISE-TACACS-ServiceNOW-Changes.py
+```
 ![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/SNOW-Change.png)
 
 ## Credits
