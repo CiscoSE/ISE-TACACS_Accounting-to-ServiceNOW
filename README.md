@@ -1,4 +1,4 @@
-# ISE/TACACS-Accounting to ServiceNOW-Change
+# ISE/TACACS Accounting to ServiceNOW Change
 
 ## Motivation
 The motivation for this code is to solve a need for folks who would like to automate a change management ticket into ServiceNOW when network administrators work on the company devices. There are a couple of ways to solve this but I decided to use syslog into Logstash, which allows for some transforms during the Logstash process.
