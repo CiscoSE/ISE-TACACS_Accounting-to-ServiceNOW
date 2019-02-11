@@ -1,5 +1,8 @@
 # ISE TACACS Accounting to ServiceNOW
 
+## Motivation
+The motivation for this code is to solve a need for folks who would like to automate a change management ticket into ServiceNOW when network administrators work on the company devices. There are a couple of ways to solve this but I decided to use syslog into Logstash, which allows for some transforms during the Logstash process.
+
 ## Prerequisites
 1. ISE 2.4 (2.2 and 2.3 should work but wasn't tested during the build)
 2. Workload capable of running Logstash. (Tested on EC2 in AWS)
