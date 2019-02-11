@@ -48,7 +48,7 @@ $ python3 ISE-TACACS-ServiceNOW-Changes.py
 ![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/SNOW-Change.png)
 
 ## Credits
-Credit to Cisco Dev-NET and the folks who hosted the Dev-NET workshop I was able to attend in December, 2018. In addition ServiceNOW inspiration comes from various companies I have come from where ServiceNOW was the main ITSM application of choice.
+AWS Document around logstash that I took directly and placed above https://aws.amazon.com/elasticsearch-service/resources/articles/logstash-tutorial/ . Various references from ServiceNOW.
 
 ## License
 This project is licensed to you under the terms of the [Cisco Sample
