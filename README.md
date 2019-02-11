@@ -2,10 +2,10 @@
 
 ## Prerequisites
 1. ISE 2.4 (2.2 and 2.3 should work but wasn't tested during the build)
-2. Workload capable of running Logstash
+2. Workload capable of running Logstash. (Tested on EC2 in AWS)
 3. ServiceNOW account with a service account capable of creating Change Management tickets
 
-
+### Step 1 - Install logstash
 ```
 The first step to installing Logstash from YUM is to retrieve Elastic’s public key.
 [user]$ rpm –import https://artifacts.elastic.co/GPG-KEY-elasticsearch
@@ -30,3 +30,4 @@ Next, if you’re running this tutorial on a micro instance, you may have memory
 [user]$ export LS_JAVA_OPTS=“-Xms500m -Xmx500m -XX:ParallelGCThreads=1”
 
 ```
+### Step 2 - Copy the logstash.conf to /etc/logstash/conf.d/
