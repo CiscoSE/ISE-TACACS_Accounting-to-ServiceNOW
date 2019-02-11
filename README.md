@@ -39,3 +39,6 @@ This conf file creates a daily log in /var/log/logstash/tacacs-{YYYY-MM-dd}. Thi
 ### Step 3 - Configure ISE to send TACACS commands to the logstash remote target
 ![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/remote%20target-fixed.png)
 ![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/Logging%20Category.png)
+
+### Step 4 - Setup a cronjob to run the script
+![alt text]()
