@@ -41,6 +41,7 @@ This conf file creates a daily log in /var/log/logstash/tacacs-{YYYY-MM-dd}. Thi
 ![alt text](https://github.com/CiscoSE/ISE-TACACS_Accounting-to-ServiceNOW/blob/master/images/Logging%20Category.png)
 
 ### Step 4 - Setup a cronjob to run the script
+Note that logstash creates a new log name for each day, so running this script on a daily basis would be advisable. You can modify the code to aggregate the logs for the last 7 days would be good too. I may end up doing that if there is an ask.
 ```
 $ python3 ISE-TACACS-ServiceNOW-Changes.py
 ```
